@@ -6,13 +6,10 @@ import { useState } from "react";
 
 function LoginPage() {
   const [actualPage, setActualPage] = useState("login");
-  console.log(actualPage);
-  const onSubmit = (values, actions) => {
-    console.log("submit", values);
-  };
+
+  const onSubmit = (values, actions) => {};
   return (
     <WrapperLogin>
-
       <FormContaier>
         <h1>BEM VINDO AO TO-DO-LIST</h1>
         <Formik
@@ -79,7 +76,6 @@ function LoginPage() {
       <ImageContainer>
         <img src={image} alt="foto de pessoas lendo uma lista de tarefas" />
       </ImageContainer>
-
     </WrapperLogin>
   );
 }
