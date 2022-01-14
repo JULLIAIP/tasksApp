@@ -3,20 +3,18 @@ import { Formik } from "formik";
 import { FormContaier, ImageContainer, WrapperLogin } from "./style";
 import image from "../../assets/initial.jpg";
 import { useState } from "react";
+import { useTasksGlobalContext } from "../../hooks/contextTask";
 
 function LoginPage() {
+  const { onSubmitCards } = useTasksGlobalContext();
   const [actualPage, setActualPage] = useState("login");
-  console.log(actualPage);
-  const onSubmit = (values, actions) => {
-    console.log("submit", values);
-  };
+
   return (
     <WrapperLogin>
-
       <FormContaier>
         <h1>BEM VINDO AO TO-DO-LIST</h1>
         <Formik
-          onSubmit={onSubmit}
+          onSubmit={onSubmitCards}
           initialValues={{
             name: "",
             password: "",
@@ -79,7 +77,6 @@ function LoginPage() {
       <ImageContainer>
         <img src={image} alt="foto de pessoas lendo uma lista de tarefas" />
       </ImageContainer>
-
     </WrapperLogin>
   );
 }
