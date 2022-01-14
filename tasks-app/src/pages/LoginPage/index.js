@@ -3,17 +3,18 @@ import { Formik } from "formik";
 import { FormContaier, ImageContainer, WrapperLogin } from "./style";
 import image from "../../assets/initial.jpg";
 import { useState } from "react";
+import { useTasksGlobalContext } from "../../hooks/contextTask";
 
 function LoginPage() {
+  const { onSubmitCards } = useTasksGlobalContext();
   const [actualPage, setActualPage] = useState("login");
 
-  const onSubmit = (values, actions) => {};
   return (
     <WrapperLogin>
       <FormContaier>
         <h1>BEM VINDO AO TO-DO-LIST</h1>
         <Formik
-          onSubmit={onSubmit}
+          onSubmit={onSubmitCards}
           initialValues={{
             name: "",
             password: "",

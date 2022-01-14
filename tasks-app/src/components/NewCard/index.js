@@ -1,15 +1,12 @@
 import React from "react";
-import {
-  Button,
-  Input,
-  Popover,
-  TextField,
-  Typography,
-} from "@material-ui/core";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import { Button, Popover, TextField, Typography } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 import { WrapperNewCard } from "./styles";
+import { Formik } from "formik";
+import { useTasksGlobalContext } from "../../hooks/contextTask";
 
 function NewCard() {
+  const { onSubmitCard } = useTasksGlobalContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -25,8 +22,8 @@ function NewCard() {
   return (
     <WrapperNewCard>
       <h1>Novo Cartão</h1>
-      <button onClick={handleClick}>
-        <AddCircleOutlineIcon />
+      <button title="Adcionar" onClick={handleClick}>
+        <AddIcon />
       </button>
       <Popover
         id={id}
@@ -43,22 +40,34 @@ function NewCard() {
         }}
       >
         <Typography variant="h6">Escolha o nome do cartão</Typography>
-        <TextField
-          name="name"
-          type="text"
-          title="nome"
-          placeholder="Nome do Cartão"
-          variant="outlined"
-          fullWidth
+        <Formik
+          onSubmit={onSubmitCard}
+          initialValues={{
+            name: "",
+          }}
+          render={({ values, handleChange, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <TextField
+                name="name"
+                type="text"
+                title="nome"
+                placeholder="Nome do Cartão"
+                variant="outlined"
+                onChange={handleChange}
+                fullWidth
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                title="entrar"
+                color="primary"
+                fullWidth
+              >
+                Criar
+              </Button>
+            </form>
+          )}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          title="entrar"
-          color="primary"
-        >
-          Criar
-        </Button>
       </Popover>
     </WrapperNewCard>
   );
