@@ -21,8 +21,9 @@ export default async function createUser(
       id,
       req.body.name,
       req.body.email,
+      req.body.gender,
       req.body.pass,
-      req.body.gender
+      
     );
     res.status(200).send("Usuário Criado com Sucesso");
   } catch (error) {

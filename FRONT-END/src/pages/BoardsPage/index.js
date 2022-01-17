@@ -7,7 +7,6 @@ import ModalNewTask from "../../components/Modal";
 
 function BoardsPage() {
   const { listCards } = useTasksGlobalContext();
-  console.log(listCards);
   return (
     <WrapperBoards>
       <Header name={"Júllia"} />
