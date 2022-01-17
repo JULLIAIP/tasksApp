@@ -3,8 +3,9 @@ import { Formik } from "formik";
 import { FormContaier, ImageContainer, WrapperLogin } from "./style";
 import image from "../../assets/initial.jpg";
 import { useState } from "react";
-import { useTasksGlobalContext } from "../../hooks/contextTask";
-import { createNew, getById } from "../../services/endpoints";
+//import { useTasksGlobalContext } from "../../hooks/contextTask";
+import { createNew } from "../../services/endpoints";
+import { NavLink } from "react-router-dom";
 
 function LoginPage() {
   // const { onSubmitCards } = useTasksGlobalContext();
@@ -84,15 +85,16 @@ function LoginPage() {
                 fullWidth
                 required
               />
-
-              <Button
-                type="submit"
-                variant="contained"
-                title="entrar"
-                color="primary"
-              >
-                {actualPage === "login" ? "ENTRAR" : "CADASTRAR"}
-              </Button>
+              <NavLink to="/boards">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  title="entrar"
+                  color="primary"
+                >
+                  {actualPage === "login" ? "ENTRAR" : "CADASTRAR"}
+                </Button>
+              </NavLink>
             </form>
           )}
         />
